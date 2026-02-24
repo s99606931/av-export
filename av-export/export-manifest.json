@@ -1,0 +1,33 @@
+{
+  "exported_at": "2026-02-24T06:47:52.284609+00:00",
+  "source_project": "{{PROJECT_NAME}}",
+  "mode": "--portable",
+  "sanitized": true,
+  "placeholder_count": 14,
+  "filter": "portable=true AND domain in [vibe, base, util]",
+  "domain_taxonomy": {
+    "vibe": "생태계 핵심 도구 (항상 이식)",
+    "base": "범용 필수 도구 (항상 이식)",
+    "util": "범용 선택 도구 (기술스택 맞으면 이식)"
+  },
+  "components": {
+    "rules": 3,
+    "skills": 19,
+    "agents": 9,
+    "hooks": 5,
+    "total": 36
+  },
+  "extras": {
+    "docs_topics": 4,
+    "docs_ecosystem": 5,
+    "templates": 16,
+    "portable_guide": "docs/av-portable-guide.md",
+    "ecosystem_docs": "docs/av-ecosystem/",
+    "sanitize_rules": "sanitize-rules.json",
+    "sanitize_report": "sanitize-report.json",
+    "install_script": "install.sh"
+  },
+  "install_command": "bash install.sh",
+  "hydrate_command": "/av-vibe-portable-init setup",
+  "github_workflow": "git clone REPO /tmp/av && bash /tmp/av/install.sh --target PROJECT"
+}

@@ -1,0 +1,38 @@
+{
+  "sanitized_at": "2026-02-24T06:47:40.808771+00:00",
+  "source": "AllSaaS ERP (original values intentionally preserved in sanitize-rules.json)",
+  "placeholder_substitutions": {
+    "total": 445,
+    "by_placeholder": {
+      "{{BACKEND_FRAMEWORK}}+Fastify+{{ORM_NAME}} 7": 2,
+      "{{FRONTEND_FRAMEWORK}}+React 19": 1,
+      "{{PKG_MANAGER}}": 57,
+      "{{MESSAGING_SYSTEM}} 2.12": 1,
+      "{{LINTER_NAME}} 2": 2,
+      "{{ORM_NAME}} 7": 9,
+      "{{PROJECT_ROOT}}": 19,
+      "{{PROJECT_SRC}}": 59,
+      "{{PROJECT_SRC}}/": 4,
+      "{{PACKAGE_SCOPE}}": 22,
+      "{{PROJECT_NAME}} ERP": 4,
+      "{{PROJECT_NAME}}": 58,
+      "{{MONOREPO_TOOL}}": 9,
+      "{{BACKEND_FRAMEWORK}}": 48,
+      "{{FRONTEND_FRAMEWORK}}": 26,
+      "{{ORM_NAME}}": 32,
+      "{{MESSAGING_SYSTEM}}": 7,
+      "{{LINTER_NAME}}": 28,
+      "{{MULTI_TENANT_FIELD}}": 27,
+      "{{PROJECT_DOMAIN}}": 2,
+      "{{BUILD_COMMAND}}": 28
+    }
+  },
+  "sections_removed": 1,
+  "example_replacements": 19,
+  "memory_files_reset": {
+    "skills": 19,
+    "agents": 9
+  },
+  "files_processed": 45,
+  "warnings": []
+}

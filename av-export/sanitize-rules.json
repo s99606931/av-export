@@ -1,0 +1,266 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "description": "av-vibe-forge export --portable 시 자동 정화 규칙 정의",
+    "created": "2026-02-24",
+    "purpose": "AllSaaS 고유정보를 플레이스홀더로 치환하여 이식 가능한 패키지 생성"
+  },
+
+  "placeholders": [
+    {
+      "id": "PROJECT_NAME",
+      "description": "프로젝트 이름",
+      "tier": 1,
+      "required": true,
+      "default": "MyProject",
+      "allsaas_values": ["AllSaaS", "AllSaaS ERP", "AllSPU"],
+      "patterns": ["AllSaaS", "AllSaaS ERP", "AllSPU"]
+    },
+    {
+      "id": "PROJECT_ROOT",
+      "description": "프로젝트 절대 루트 경로",
+      "tier": 1,
+      "required": true,
+      "default": "(auto-detect: pwd)",
+      "allsaas_values": ["{{PROJECT_ROOT}}"],
+      "patterns": ["{{PROJECT_ROOT}}"]
+    },
+    {
+      "id": "PROJECT_SRC",
+      "description": "소스 루트 상대 경로",
+      "tier": 1,
+      "required": true,
+      "default": "src",
+      "allsaas_values": ["project_erp/src", "project_erp"],
+      "patterns": ["project_erp/src", "project_erp/"]
+    },
+    {
+      "id": "PACKAGE_SCOPE",
+      "description": "npm 패키지 스코프 (@prefix)",
+      "tier": 1,
+      "required": true,
+      "default": "@myproject",
+      "allsaas_values": ["@allsaas"],
+      "patterns": ["@allsaas"]
+    },
+    {
+      "id": "BACKEND_FRAMEWORK",
+      "description": "백엔드 프레임워크명",
+      "tier": 1,
+      "required": false,
+      "default": "(choose)",
+      "allsaas_values": ["NestJS 11", "NestJS"],
+      "patterns": ["NestJS 11\\+Fastify\\+Prisma 7", "NestJS \\d+\\+Fastify", "NestJS"]
+    },
+    {
+      "id": "FRONTEND_FRAMEWORK",
+      "description": "프론트엔드 프레임워크명",
+      "tier": 1,
+      "required": false,
+      "default": "(choose)",
+      "allsaas_values": ["Next.js 15", "Next.js"],
+      "patterns": ["Next\\.js 15\\+React 19\\+TailwindCSS 4\\.1", "Next\\.js \\d+\\+React \\d+", "Next\\.js"]
+    },
+    {
+      "id": "ORM_NAME",
+      "description": "ORM/데이터베이스 추상화 계층명",
+      "tier": 2,
+      "required": false,
+      "default": "none",
+      "allsaas_values": ["Prisma 7", "Prisma"],
+      "patterns": ["Prisma 7", "Prisma"]
+    },
+    {
+      "id": "MESSAGING_SYSTEM",
+      "description": "메시징 시스템명",
+      "tier": 2,
+      "required": false,
+      "default": "none",
+      "allsaas_values": ["NATS 2.12", "NATS"],
+      "patterns": ["NATS 2\\.12", "NATS"]
+    },
+    {
+      "id": "MONOREPO_TOOL",
+      "description": "모노레포 관리 도구명",
+      "tier": 2,
+      "required": false,
+      "default": "none",
+      "allsaas_values": ["Turborepo"],
+      "patterns": ["Turborepo"]
+    },
+    {
+      "id": "LINTER_NAME",
+      "description": "린터/포매터명",
+      "tier": 2,
+      "required": false,
+      "default": "ESLint",
+      "allsaas_values": ["Biome 2", "Biome"],
+      "patterns": ["Biome 2", "Biome"]
+    },
+    {
+      "id": "PKG_MANAGER",
+      "description": "패키지 매니저명 (버전 포함 가능)",
+      "tier": 2,
+      "required": false,
+      "default": "npm",
+      "allsaas_values": ["pnpm 10.6.2", "pnpm"],
+      "patterns": ["pnpm 10\\.6\\.2", "pnpm"]
+    },
+    {
+      "id": "BUILD_COMMAND",
+      "description": "빌드 실행 명령어",
+      "tier": 2,
+      "required": false,
+      "default": "npm run build",
+      "allsaas_values": ["./infra/dev.sh build"],
+      "patterns": ["\\.\\./infra/dev\\.sh build", "./infra/dev\\.sh build"]
+    },
+    {
+      "id": "MULTI_TENANT_FIELD",
+      "description": "멀티테넌트 식별 필드명",
+      "tier": 2,
+      "required": false,
+      "default": "none",
+      "allsaas_values": ["tenantId"],
+      "patterns": ["tenantId"]
+    },
+    {
+      "id": "PROJECT_DOMAIN",
+      "description": "프로젝트 도메인/비즈니스 설명",
+      "tier": 2,
+      "required": false,
+      "default": "(enter your domain description)",
+      "allsaas_values": ["공공기관 ERP SaaS", "20,000개 기관"],
+      "patterns": ["공공기관 ERP SaaS", "20,000개 기관"]
+    }
+  ],
+
+  "section_removals": [
+    {
+      "description": "av-portable-guide.md의 AllSaaS 전용 intent-gen 이관 가이드 섹션 제거",
+      "file_glob": "docs/av-portable-guide.md",
+      "start_pattern": "## 3. intent-gen 프로젝트 이관 가이드",
+      "end_pattern": "## 4. 커스터마이징 가이드",
+      "replacement_header": "## 3. 이식 후 설정 가이드\n\n> 이 섹션은 각 프로젝트별로 맞춤화하세요. `/av-vibe-portable-init setup` 실행 후 자동 생성됩니다.\n\n"
+    },
+    {
+      "description": "av-base-code-quality SKILL.md의 AllSaaS 전용 서비스 경로 섹션 제거",
+      "file_glob": "skills/av-base-code-quality/SKILL.md",
+      "start_pattern": "project_erp/src/services",
+      "context": "line",
+      "replacement": "{{PROJECT_SRC}}/services"
+    },
+    {
+      "description": "av-base-sync SKILL.md의 AllSaaS 전용 경로 치환",
+      "file_glob": "skills/av-base-sync/SKILL.md",
+      "start_pattern": "project_erp/src",
+      "context": "line",
+      "replacement": "{{PROJECT_SRC}}"
+    }
+  ],
+
+  "stack_presets": {
+    "NestJS+Next.js": {
+      "description": "NestJS + Next.js 풀스택 (AllSaaS 기본 스택)",
+      "auditor_check3": "NestJS Module/Controller/Service DI 패턴, Prisma 7 스키마 규칙 (tenantId, deletedAt, @@index), OpenAPI 3.1 데코레이터",
+      "code_quality_commands": [
+        "pnpm biome lint",
+        "pnpm tsc --noEmit",
+        "pnpm jest",
+        "pnpm turbo build"
+      ],
+      "refactor_patterns": ["NestJS Module 분리", "공통 Interceptor/Guard 추출", "Prisma Repository 패턴"]
+    },
+    "FastAPI+React": {
+      "description": "FastAPI + React 풀스택",
+      "auditor_check3": "FastAPI Router/Dependency Injection 패턴, SQLAlchemy ORM 규칙, Pydantic 스키마 검증",
+      "code_quality_commands": [
+        "flake8 .",
+        "mypy .",
+        "pytest",
+        "npm run build"
+      ],
+      "refactor_patterns": ["FastAPI Router 분리", "공통 Dependency 추출", "SQLAlchemy Repository 패턴"]
+    },
+    "Django+React": {
+      "description": "Django + React 풀스택",
+      "auditor_check3": "Django View/Serializer/Model 패턴, ORM QuerySet 최적화 규칙, DRF API 설계",
+      "code_quality_commands": [
+        "flake8 .",
+        "python manage.py check",
+        "pytest",
+        "npm run build"
+      ],
+      "refactor_patterns": ["Django App 분리", "공통 Mixin 추출", "Manager 패턴"]
+    },
+    "Go+React": {
+      "description": "Go + React 풀스택",
+      "auditor_check3": "Go Handler/Service/Repository 패턴, 인터페이스 기반 DI, 에러 래핑 규칙",
+      "code_quality_commands": [
+        "go vet ./...",
+        "go build ./...",
+        "go test ./...",
+        "npm run build"
+      ],
+      "refactor_patterns": ["Go Package 분리", "공통 Middleware 추출", "Repository Interface 패턴"]
+    },
+    "generic": {
+      "description": "범용 스택 (스택 무관)",
+      "auditor_check3": "기본 코딩 컨벤션 준수 — 스택별 규칙은 /av-vibe-portable-init customize → '감사 규칙 수정' 선택하여 직접 편집",
+      "code_quality_commands": [
+        "npm run lint",
+        "npm run typecheck",
+        "npm test",
+        "npm run build"
+      ],
+      "refactor_patterns": ["공통 모듈 추출", "중복 코드 제거", "단일 책임 원칙 준수"]
+    }
+  },
+
+  "example_replacements": [
+    {
+      "description": "ERP 모듈명 → 범용 도메인 예시 치환",
+      "from": "acc (회계)",
+      "to": "{service} (your service)"
+    },
+    {
+      "description": "ERP 서브모듈명 치환",
+      "from_patterns": ["acc/slipMgmt", "bdg/bdgPlanning", "pay/salary", "hcm/empMgmt"],
+      "to": "{module}/{sub-module}"
+    },
+    {
+      "description": "AllSaaS 전용 에이전트 예시 치환",
+      "from_patterns": ["--scope \"services/core/acc/**\"", "--group acc"],
+      "to_patterns": ["--scope \"src/services/{service}/**\"", "--group {your-group}"]
+    },
+    {
+      "description": "NATS 이벤트 예시 치환",
+      "from": "allsaas.{tier}.{module}.{sub}.{entity}.{action}",
+      "to": "{project}.{tier}.{module}.{sub}.{entity}.{action}"
+    },
+    {
+      "description": "PostgreSQL Schema-per-Tenant 설명 치환",
+      "from": "PostgreSQL 17(Schema-per-Tenant)+Redis 8",
+      "to": "PostgreSQL (Schema-per-Tenant)+Redis"
+    }
+  ],
+
+  "memory_reset": {
+    "description": "export 시 MEMORY.md를 초기화 상태로 교체",
+    "skill_memory_glob": "skills/*/MEMORY.md",
+    "agent_memory_glob": "agent-memory/*/MEMORY.md",
+    "skill_template": "templates/av-docs/av-memory-init-skill.md.tmpl",
+    "agent_template": "templates/av-docs/av-memory-init-agent.md.tmpl",
+    "preserve_fields": ["name", "group", "inherits"]
+  },
+
+  "components_json_sanitize": {
+    "description": "components.json scope 필드에서 AllSaaS 전용 경로 치환",
+    "scope_replacements": [
+      {"from": "project_erp/src", "to": "{{PROJECT_SRC}}"},
+      {"from": "{{PROJECT_ROOT}}", "to": "{{PROJECT_ROOT}}"},
+      {"from": "@allsaas", "to": "{{PACKAGE_SCOPE}}"}
+    ],
+    "remove_fields_if_erp": ["erp_only", "legacy_ref"]
+  }
+}

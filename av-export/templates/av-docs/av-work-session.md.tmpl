@@ -1,0 +1,54 @@
+---
+session_id: "{{session-id}}"
+skill: "{{skill-name}}"
+started: "{{start-timestamp}}"
+participants: [{{participants}}]
+status: in-progress
+feature: "{{feature-name}}"
+---
+
+# Work Session: {{title}}
+
+## Goal
+
+{{goal-description}}
+
+## Context
+
+- Plan 참조: `docs/01-plan/features/{{feature-name}}.plan.md`
+- Design 참조: `docs/02-design/features/{{feature-name}}.design.md`
+- 관련 파일:
+  - {{related-file-1}}
+  - {{related-file-2}}
+
+## Progress Log
+
+| 시간 | 참여자 | 작업 | 상태 |
+|------|--------|------|------|
+| {{time-1}} | {{participant-1}} | {{task-1}} | ✅ 완료 |
+| {{time-2}} | {{participant-2}} | {{task-2}} | 🔄 진행중 |
+| {{time-3}} | {{participant-3}} | {{task-3}} | ⏳ 대기 |
+
+## Artifacts
+
+중간 결과물:
+
+| 파일 | 유형 | 상태 |
+|------|------|------|
+| {{artifact-path-1}} | 생성/수정 | ✅ |
+| {{artifact-path-2}} | 생성/수정 | 🔄 |
+
+## Audit Report
+
+| 항목 | 값 |
+|------|-----|
+| 감사 수준 | L1/L2/L3 |
+| 감사 상태 | 대기/진행중/완료 |
+| 결과 | PASS/FAIL/NEED_NEW |
+| 피드백 | {{audit-feedback}} |
+
+## Completion
+
+- 완료 시각: {{end-timestamp}}
+- 최종 상태: {{final-status}}
+- 변경 파일: {{changed-files-count}}개

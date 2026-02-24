@@ -1,0 +1,80 @@
+---
+name: {{skill-name}}
+description: |
+  {{skill-description}}
+  트리거: {{trigger-keywords}}
+autovibe: true
+version: "1.0"
+created: "{{created-date}}"
+group: {{group}}
+tier: {{tier-or-null}}
+inherits: {{inherits-or-null}}
+argument-hint: "{{subcommand}} [options]"
+user-invocable: true
+allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Task]
+---
+
+# {{skill-name}}
+
+> {{skill-one-liner}}
+
+## Arguments
+
+| 인자 | 필수 | 설명 | 기본값 |
+|------|:----:|------|--------|
+| `{{arg1}}` | ✅ | {{arg1-desc}} | — |
+| `{{arg2}}` | ❌ | {{arg2-desc}} | `{{arg2-default}}` |
+
+## Subcommands
+
+### {{subcommand-1}}
+
+```
+/{{skill-name}} {{subcommand-1}} [options]
+```
+
+{{subcommand-1-description}}
+
+**단계**:
+1. {{step-1}}
+2. {{step-2}}
+3. {{step-3}}
+
+### {{subcommand-2}}
+
+```
+/{{skill-name}} {{subcommand-2}} [options]
+```
+
+{{subcommand-2-description}}
+
+## 상속 컨텍스트
+
+{{#if inherits}}
+> 이 스킬은 `{{inherits}}`를 상속합니다.
+
+| 항목 | 부모 값 | 이 스킬 값 |
+|------|---------|-----------|
+| scope | {{parent-scope}} | {{this-scope}} |
+{{/if}}
+
+## 프로세스
+
+```
+시작 프로토콜 (protocols.md §1)
+  ↓
+STEP 1: {{process-step-1}}
+STEP 2: {{process-step-2}}
+STEP 3: {{process-step-3}}
+  ↓
+구조화 보고서 작성 (protocols.md §4)
+  ↓
+av-auditor 감사 요청 (audit-rules.md §2)
+  ↓
+PASS → 종료 | FAIL → 재작업 (최대 3회)
+```
+
+## 실행 프로토콜 참조
+
+- 시작/종료 프로토콜: `.claude/docs/av-claude-code-spec/topics/protocols.md`
+- 감사 규칙: `.claude/docs/av-claude-code-spec/topics/audit-rules.md`

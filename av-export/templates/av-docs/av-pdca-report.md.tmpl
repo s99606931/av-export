@@ -1,0 +1,53 @@
+---
+template: docs/PDCA-REPORT.md.tmpl
+service: "{{SERVICE_NAME}}"
+module: "{{MODULE}}"
+---
+# {{SERVICE_NAME}} PDCA 완료 보고서
+
+> {{CATEGORY}} / {{DOMAIN}} | 완료일: {{DATE}}
+
+## 요약
+
+- **대상**: {{SERVICE_NAME}} ({{MODULE}})
+- **최종 Match Rate**: --%
+- **빌드 상태**: Pass / Fail
+- **Iterate 횟수**: -회
+
+## Plan 결과
+
+- 목표: (계획한 목표)
+- 범위: (계획한 범위)
+- 완료 기준 달성: Yes / No
+
+## Design 결과
+
+- 설계 문서: `docs/02-design/features/{{DOMAIN}}/`
+- API 수: -개
+- DB 모델 수: -개
+- NATS 이벤트 수: -개
+
+## Do 결과
+
+- 구현 파일 수: -개
+- 코드 라인 수: -줄
+- 빌드: `pnpm build:{{MODULE}}` 성공
+- 주요 구현 내용: (요약)
+
+## Check 결과
+
+- Match Rate 추이: -% → -% → --%
+- CRITICAL 이슈: -건 (해결 -건)
+- MAJOR 이슈: -건 (해결 -건)
+- MINOR 이슈: -건 (이관 -건)
+
+## Act 결과
+
+- 개선 조치: (수행한 조치 요약)
+- 이관 항목: (다음 Phase로 이관된 항목)
+
+## 교훈
+
+1. **잘된 점**: (기술)
+2. **개선할 점**: (기술)
+3. **다음 Phase 참고**: (기술)

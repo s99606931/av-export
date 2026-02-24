@@ -1,0 +1,39 @@
+---
+template: docs/SKILL.md.tmpl
+service: "{{SERVICE_NAME}}"
+module: "{{MODULE}}"
+---
+# {{SERVICE_NAME}} 스킬
+
+## 정의
+
+- **name**: {{MODULE}}
+- **description**: {{DOMAIN}} 관련 작업을 수행하는 스킬
+- **category**: {{CATEGORY}}
+
+## Commands
+
+| 명령어 | 인자 | 설명 |
+|--------|------|------|
+| `implement` | `[대상ID]` | 구현 실행 |
+| `review` | `[대상ID]` | 코드 리뷰 |
+| `test` | `[대상ID]` | 테스트 실행 |
+| `audit` | `[모듈명]` | 감사/검증 |
+
+## 사용 예시
+
+```
+/{{MODULE}} implement SYS-001
+/{{MODULE}} review acc-backend
+/{{MODULE}} audit {{MODULE}}
+```
+
+## 워크플로우
+
+1. 대상 식별 → 2. 컨텍스트 로드 → 3. 실행 → 4. 검증 → 5. 보고
+
+## 참조
+
+- 스킬 디렉토리: `.claude/skills/`
+- PDCA 워크플로우: `plan → design → do → test → check → act → report`
+- 관련 문서: `docs/02-design/features/{{DOMAIN}}/`

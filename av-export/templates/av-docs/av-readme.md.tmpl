@@ -1,0 +1,57 @@
+---
+template: docs/README.md.tmpl
+service: "{{SERVICE_NAME}}"
+module: "{{MODULE}}"
+---
+# {{SERVICE_NAME}}
+
+> {{CATEGORY}} / {{MODULE}} 서비스
+
+## 개요
+
+- **목적**: (서비스 목적 기술)
+- **도메인**: {{DOMAIN}}
+- **포트**: (백엔드 포트)
+- **작성일**: {{DATE}}
+
+## 기술 스택
+
+| 구분 | 기술 |
+|------|------|
+| Runtime | Node.js 24 LTS |
+| Framework | NestJS 11 + Fastify |
+| ORM | Prisma 7 |
+| DB | PostgreSQL 17 (Schema-per-Tenant) |
+| 캐시 | Redis 8 |
+| 메시징 | NATS 2.12 |
+
+## 디렉토리 구조
+
+```
+src/
+├── {{MODULE}}.module.ts
+├── {{MODULE}}.controller.ts
+├── {{MODULE}}.service.ts
+├── dto/
+├── entities/
+└── tests/
+```
+
+## 설치 및 실행
+
+```bash
+pnpm install
+pnpm dev:{{MODULE}}
+```
+
+## API
+
+| Method | Path | 설명 |
+|--------|------|------|
+| GET | /api/{{MODULE}} | 목록 조회 |
+| POST | /api/{{MODULE}} | 등록 |
+
+## 참조
+
+- 설계문서: `docs/02-design/features/{{DOMAIN}}/`
+- SSOT 레지스트리: `docs/01-plan/features/dev-consistency-toolkit/01-ssot-master-registry.plan.md`

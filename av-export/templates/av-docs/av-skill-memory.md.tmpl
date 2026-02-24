@@ -1,0 +1,52 @@
+# {{skill-name}} Skill Memory
+
+> 자동 관리 메모리. 100줄 초과 시 topics/ 폴더로 분리.
+> 마지막 업데이트: {{last-updated}}
+
+## Usage Stats
+
+| 항목 | 값 |
+|------|-----|
+| Skill | `{{skill-name}}` |
+| Group | {{group}} |
+| 총 실행 | {{total-runs}}회 |
+| 마지막 실행 | {{last-run-date}} |
+| 성공률 | {{success-rate}}% |
+
+## Frequent Patterns
+
+반복적으로 사용되는 인자/조합:
+
+| 패턴 | 빈도 | 메모 |
+|------|------|------|
+| `/{{skill-name}} {{common-arg}}` | {{freq}} | {{note}} |
+
+## Project-specific Config
+
+AllSaaS 스택 최적화 설정:
+
+```
+{{project-config-key}}: {{project-config-value}}
+{{stack-preference}}: {{stack-value}}
+```
+
+## Known Issues
+
+| 조건 | 문제 | 해결책 |
+|------|------|--------|
+| {{condition}} | {{issue}} | {{fix}} |
+
+> 이슈가 없으면 이 줄 삭제
+
+## Called Agents
+
+| 에이전트 | 호출 조건 | 전달 데이터 |
+|----------|----------|------------|
+| av-auditor | 작업 완료 시 항상 | changed_files, task 요약 |
+| {{other-agent}} | {{call-condition}} | {{data}} |
+
+## 변경 이력
+
+| 날짜 | 버전 | 변경 내용 |
+|------|------|---------|
+| {{date}} | {{version}} | {{change}} |

@@ -1,0 +1,51 @@
+---
+template: docs/CLAUDE.md.tmpl
+service: "{{SERVICE_NAME}}"
+module: "{{MODULE}}"
+---
+# CLAUDE.md - {{SERVICE_NAME}}
+
+## 프로젝트 개요
+
+- **서비스**: {{SERVICE_NAME}} ({{CATEGORY}})
+- **도메인**: {{DOMAIN}}
+- **모듈**: {{MODULE}}
+
+## 디렉토리 구조
+
+```
+services/{{CATEGORY}}/{{MODULE}}-backend/
+├── src/
+│   ├── {{MODULE}}.module.ts
+│   ├── {{MODULE}}.controller.ts
+│   ├── {{MODULE}}.service.ts
+│   ├── dto/
+│   └── entities/
+├── prisma/
+│   └── schema.prisma
+└── test/
+```
+
+## 기술 스택
+
+> SSOT: `docs/01-plan/features/dev-consistency-toolkit/01-ssot-master-registry.plan.md` 참조
+
+- NestJS 11 + Fastify + Prisma 7 + TypeScript 5.9
+- PostgreSQL 17 (Schema-per-Tenant) + Redis 8 + NATS 2.12
+
+## 코딩 컨벤션
+
+- Module → Controller → Service → Prisma (DI 패턴)
+- API: RESTful, OpenAPI 3.1 (@nestjs/swagger)
+- 에러: RFC 7807 Problem Details
+- 변수명: camelCase (TypeScript)
+- 린터: Biome
+
+## 주요 명령어
+
+```bash
+pnpm dev:{{MODULE}}        # 개발 서버
+pnpm build:{{MODULE}}      # 빌드
+pnpm test:{{MODULE}}       # 테스트
+pnpm prisma:migrate        # DB 마이그레이션
+```

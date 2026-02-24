@@ -1,0 +1,44 @@
+---
+template: docs/PLAN.md.tmpl
+service: "{{SERVICE_NAME}}"
+module: "{{MODULE}}"
+---
+# {{SERVICE_NAME}} Plan
+
+> PDCA Plan 단계 | {{CATEGORY}} / {{DOMAIN}} | {{DATE}}
+
+## 목적
+
+(이 Plan의 목적과 배경을 기술)
+
+## 범위
+
+- **포함**: {{MODULE}} 서비스 전체
+- **제외**: (범위 밖 항목)
+
+## 완료 기준
+
+- [ ] 빌드 성공 (`pnpm build:{{MODULE}}`)
+- [ ] API 엔드포인트 정상 응답
+- [ ] 단위 테스트 통과
+- [ ] OpenAPI 스펙 생성 확인
+
+## 실행 단위
+
+| # | 작업 | 산출물 | 예상 소요 |
+|---|------|--------|-----------|
+| 1 | 모듈 스캐폴딩 | `{{MODULE}}.module.ts` | 0.5h |
+| 2 | Prisma 스키마 | `schema.prisma` | 1h |
+| 3 | CRUD API 구현 | Controller + Service | 2h |
+| 4 | 테스트 작성 | `*.spec.ts` | 1h |
+
+## 의존성
+
+- 선행: (선행 Phase/작업)
+- 외부: (외부 의존성)
+
+## 일정
+
+- **시작**: {{DATE}}
+- **목표 완료**: (완료 예정일)
+- **Phase**: (Phase 번호)

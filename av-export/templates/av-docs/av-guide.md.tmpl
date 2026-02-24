@@ -1,0 +1,60 @@
+---
+template: docs/GUIDE.md.tmpl
+service: "{{SERVICE_NAME}}"
+module: "{{MODULE}}"
+---
+# {{SERVICE_NAME}} 가이드
+
+> {{CATEGORY}} / {{DOMAIN}} | 작성일: {{DATE}}
+
+## 개요
+
+(이 가이드의 목적과 대상 독자를 기술)
+
+## 사전 준비
+
+- [ ] Node.js 24 LTS 설치
+- [ ] pnpm 10.x 설치
+- [ ] Docker Desktop / Docker Compose 실행
+- [ ] 프로젝트 클론 및 의존성 설치 (`pnpm install`)
+
+## 단계별 안내
+
+### 1단계: 환경 설정
+
+```bash
+cp .env.example .env
+pnpm docker:up
+```
+
+### 2단계: DB 마이그레이션
+
+```bash
+pnpm prisma:migrate
+pnpm prisma:seed
+```
+
+### 3단계: 개발 서버 실행
+
+```bash
+pnpm dev:{{MODULE}}
+```
+
+### 4단계: 동작 확인
+
+```bash
+curl http://localhost:{{PORT}}/api/{{MODULE}}
+```
+
+## FAQ
+
+| 질문 | 답변 |
+|------|------|
+| DB 연결 실패 시? | Docker Compose 상태 확인 (`docker ps`) |
+| 포트 충돌 시? | `.env`에서 포트 변경 |
+
+## 참조
+
+- README: `services/{{CATEGORY}}/{{MODULE}}-backend/README.md`
+- 설계문서: `docs/02-design/features/{{DOMAIN}}/`
+- 마스터 플랜: `new/00_PROJECT_PLAN.md`

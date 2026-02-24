@@ -1,0 +1,52 @@
+---
+template: docs/E2E-TEST-GUIDE.md.tmpl
+service: "{{SERVICE_NAME}}"
+module: "{{MODULE}}"
+---
+# {{SERVICE_NAME}} E2E 테스트 가이드
+
+> {{CATEGORY}} / {{MODULE}} | 작성일: {{DATE}}
+
+## 테스트 개요
+
+- **대상**: {{SERVICE_NAME}} ({{DOMAIN}})
+- **유형**: 수동 E2E 테스트
+- **환경**: 로컬 개발환경 (Docker Compose)
+
+## 사전 조건
+
+- [ ] Docker Compose 실행 (`pnpm docker:up`)
+- [ ] DB 마이그레이션 완료 (`pnpm prisma:migrate`)
+- [ ] 시드 데이터 투입 (`pnpm prisma:seed`)
+- [ ] 인증 토큰 확보 (SuperTokens)
+
+## 테스트 시나리오
+
+### TC-001: 목록 조회
+
+| 단계 | 작업 | 기대 결과 |
+|------|------|-----------|
+| 1 | `GET /api/{{MODULE}}` 호출 | 200 OK, 배열 반환 |
+| 2 | 페이지네이션 파라미터 추가 | `page`, `limit` 적용 확인 |
+
+### TC-002: 등록
+
+| 단계 | 작업 | 기대 결과 |
+|------|------|-----------|
+| 1 | `POST /api/{{MODULE}}` 호출 | 201 Created |
+| 2 | 필수 필드 누락 시 | 400 Bad Request (RFC 7807) |
+
+### TC-003: 수정/삭제
+
+| 단계 | 작업 | 기대 결과 |
+|------|------|-----------|
+| 1 | `PATCH /api/{{MODULE}}/:id` 호출 | 200 OK |
+| 2 | `DELETE /api/{{MODULE}}/:id` 호출 | 204 No Content |
+
+## 결과 기록
+
+| TC | 결과 | 비고 |
+|----|------|------|
+| TC-001 | Pass / Fail | |
+| TC-002 | Pass / Fail | |
+| TC-003 | Pass / Fail | |
